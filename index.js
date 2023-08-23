@@ -24,7 +24,7 @@ const favRoute = require('./Routes/FavRoute')
 
 // Route
 app.get('/', (req, res) => {
-    res.send('Foodixir')
+    res.send('Mindwave')
 })
 
 app.use('/api/blogs', blogRoute)
