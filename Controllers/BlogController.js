@@ -128,7 +128,7 @@ const addNewLike = async (req, res) => {
         // Update the blog post in the database
         const result = await Blog.updateOne({ _id: id }, { $push: { likes: email } }, { upsert: true });
 
-        return res.status(200).json(result);
+        return res.status(200).json({ message: "added" });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Internal server error" });
@@ -152,7 +152,7 @@ const removeLike = async (req, res) => {
         // Update the blog post in the database
         const result = await Blog.updateOne({ _id: id }, { $pull: { likes: email } }, { upsert: true });
 
-        return res.status(200).json(result);
+        return res.status(200).json({ message: "removed" });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Internal server error" });
