@@ -8,7 +8,8 @@ const {
     deleteBlog,
     updateBlog,
     getBlogByTag,
-    addNewComment
+    addNewComment,
+    addNewLike
 } = require("../Controllers/BlogController");
 
 
@@ -31,6 +32,9 @@ router.patch('/:id', updateBlog)
 
 // Add new Comment 
 router.put('/:id', addNewComment)
+
+// Add new Like
+router.put('/:id', addNewLike)
 
 // Delete a Blog
 router.delete('/:id', deleteBlog)

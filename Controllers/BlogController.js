@@ -131,9 +131,9 @@ const addNewLike = async (req, res) => {
         blogPost.likes.push(newLike);
 
         // Update the blog post in the database
-        await Blog.updateOne({ _id: id }, { $set: { likess: blogPost.likes } });
+        const result = await Blog.updateOne({ _id: id }, { $push: { likes: newLike } });
 
-        return res.json({ message: "Like added successfully", newLike });
+        return res.status(200).json(result);
     } catch (error) {
         console.error(error);
         return res.status(500).json({ error: "Internal server error" });
@@ -172,6 +172,7 @@ module.exports = {
     deleteBlog,
     updateBlog,
     getBlogByTag,
-    addNewComment
+    addNewComment,
+    addNewLike
 
 }
