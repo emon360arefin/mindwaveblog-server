@@ -116,22 +116,17 @@ const addNewComment = async (req, res) => {
 
 const addNewLike = async (req, res) => {
     const id = req.params.id;
-    const newLike = req.body;
+    const email = req.body;
+    console.log(req.body);
 
     try {
         // Fetch the blog post by id from your database (blogCollection)
         if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({ error: 'No Such blog Found' })
+            return res.status(400).json({ error: 'No Such blog Found' });
         }
 
-
-        const blogPost = await Blog.findOne({ _id: id });
-
-        // Add the new like to the likes array of the blog post
-        blogPost.likes.push(newLike);
-
         // Update the blog post in the database
-        const result = await Blog.updateOne({ _id: id }, { $push: { likes: newLike } });
+        const result = await Blog.updateOne({ _id: id }, { $push: { likes: email } }, { upsert: true });
 
         return res.status(200).json(result);
     } catch (error) {
@@ -139,6 +134,7 @@ const addNewLike = async (req, res) => {
         return res.status(500).json({ error: "Internal server error" });
     }
 }
+
 
 
 
