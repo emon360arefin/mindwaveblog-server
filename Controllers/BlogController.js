@@ -136,6 +136,30 @@ const addNewLike = async (req, res) => {
 }
 
 
+// Add a new like 
+
+const removeLike = async (req, res) => {
+    const id = req.params.id;
+    const email = req.body;
+    console.log(req.body);
+
+    try {
+        // Fetch the blog post by id from your database (blogCollection)
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ error: 'No Such blog Found' });
+        }
+
+        // Update the blog post in the database
+        const result = await Blog.updateOne({ _id: id }, { $pull: { likes: email } }, { upsert: true });
+
+        return res.status(200).json(result);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ error: "Internal server error" });
+    }
+}
+
+
 
 
 // Delete a blog
@@ -169,6 +193,7 @@ module.exports = {
     updateBlog,
     getBlogByTag,
     addNewComment,
-    addNewLike
+    addNewLike,
+    removeLike
 
 }

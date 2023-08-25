@@ -9,7 +9,8 @@ const {
     updateBlog,
     getBlogByTag,
     addNewComment,
-    addNewLike
+    addNewLike,
+    removeLike
 } = require("../Controllers/BlogController");
 
 
@@ -35,6 +36,9 @@ router.put('/:id', addNewComment)
 
 // Add new Like
 router.put('/like/:id', addNewLike)
+
+// Remove Like
+router.put('/like/remove/:id', removeLike)
 
 // Delete a Blog
 router.delete('/:id', deleteBlog)
