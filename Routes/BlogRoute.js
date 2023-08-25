@@ -34,7 +34,7 @@ router.patch('/:id', updateBlog)
 router.put('/:id', addNewComment)
 
 // Add new Like
-router.put('/:id', addNewLike)
+router.put('/like/:id', addNewLike)
 
 // Delete a Blog
 router.delete('/:id', deleteBlog)
