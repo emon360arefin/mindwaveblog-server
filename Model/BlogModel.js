@@ -7,10 +7,6 @@ const commentSchema = new mongoose.Schema({
 });
 
 const blogSchema = new mongoose.Schema({
-    id: {
-        type: Number,
-        required: true
-    },
     title: {
         type: String,
         required: true
@@ -21,7 +17,6 @@ const blogSchema = new mongoose.Schema({
     },
     published_date: {
         type: Date,
-        required: true
     },
     category: {
         type: String,

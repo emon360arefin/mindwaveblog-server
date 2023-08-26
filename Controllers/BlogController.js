@@ -47,7 +47,6 @@ const getBlogByTag = async (req, res) => {
 // Post a new blog
 const createBlog = async (req, res) => {
 
-
     try {
         const blog = await Blog.create(req.body)
         res.status(200).json(blog)
