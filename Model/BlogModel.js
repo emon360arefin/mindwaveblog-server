@@ -15,6 +15,10 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    author_img: {
+        type: String,
+        required: true
+    },
     published_date: {
         type: Date,
     },
